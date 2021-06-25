@@ -3,19 +3,6 @@ FROM gitpod/workspace-full
 # Prerequisites
 RUN sudo apt-get update && sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
 
-# NACOSTA Prerequesites
-
-RUN sudo apt-get install -y gnupg2
-
-RUN \
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
-  sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
-
-RUN sudo apt-get update
-RUN sudo apt-get install -y google-chrome-stable
-
-RUN sudo rm -rf /var/lib/apt/lists/*
-
 # Set up new user
 RUN sudo useradd -ms /bin/bash developer
 USER developer
