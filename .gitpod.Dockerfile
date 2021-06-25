@@ -12,6 +12,7 @@ RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.2
 USER gitpod
 
 # Android
+ENV JAVA_HOME=/home/gitpod/.sdkman/candidates/java/current/bin/
 ENV ANDROID_HOME="/home/gitpod/.android"
 ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
 ENV ANDROID_SDK_ARCHIVE="${ANDROID_HOME}/archive"
