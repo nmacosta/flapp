@@ -7,13 +7,11 @@ USER root
 
 RUN apt-get update -y
 RUN apt-get install -y gcc make build-essential wget curl unzip apt-utils xz-utils libkrb5-dev gradle libpulse0 android-tools-adb android-tools-fastboot
-RUN apt remove --purge openjdk-*-jdk
-RUN apt-get install -y openjdk-8-jdk
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.292-open"
 
 USER gitpod
 
 # Android
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 ENV ANDROID_HOME="/home/gitpod/.android"
 ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
 ENV ANDROID_SDK_ARCHIVE="${ANDROID_HOME}/archive"
