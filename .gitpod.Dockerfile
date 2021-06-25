@@ -8,8 +8,8 @@ RUN sudo apt-get update && sudo apt-get install -y curl git unzip xz-utils zip l
 RUN sudo apt-get install -y gnupg2
 
 RUN \
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+  sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
 
 RUN sudo apt-get update
 RUN sudo apt-get install -y google-chrome-stable
@@ -17,7 +17,7 @@ RUN sudo apt-get install -y google-chrome-stable
 RUN sudo rm -rf /var/lib/apt/lists/*
 
 # Set up new user
-RUN useradd -ms /bin/bash developer
+RUN sudo useradd -ms /bin/bash developer
 USER developer
 WORKDIR /home/developer
 
