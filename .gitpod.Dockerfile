@@ -7,7 +7,6 @@ USER root
 
 RUN apt-get update -y
 RUN apt-get install -y gcc make build-essential wget curl unzip apt-utils xz-utils libkrb5-dev gradle libpulse0 android-tools-adb android-tools-fastboot
-RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.292-open"
 
 USER gitpod
 
@@ -30,7 +29,7 @@ RUN mkdir -p "${ANDROID_HOME}"
 RUN touch $ANDROID_HOME/repositories.cfg
 RUN wget -q "${ANDROID_SDK_URL}" -O "${ANDROID_SDK_ARCHIVE}"
 RUN unzip -q -d "${ANDROID_HOME}" "${ANDROID_SDK_ARCHIVE}"
-# RUN echo y | "${ANDROID_HOME}/tools/bin/sdkmanager" "platform-tools" "platforms;android-29" "build-tools;29.0.2"
+RUN echo y | "${ANDROID_HOME}/tools/bin/sdkmanager" "platform-tools" "platforms;android-29" "build-tools;29.0.2"
 RUN rm "${ANDROID_SDK_ARCHIVE}"
 
 # Flutter
@@ -40,7 +39,7 @@ RUN $FLUTTER_HOME/bin/flutter channel master
 RUN $FLUTTER_HOME/bin/flutter upgrade
 RUN $FLUTTER_HOME/bin/flutter precache
 RUN $FLUTTER_HOME/bin/flutter config --enable-web --no-analytics
-# RUN yes "y" | $FLUTTER_HOME/bin/flutter doctor --android-licenses -v
+ RUN yes "y" | $FLUTTER_HOME/bin/flutter doctor --android-licenses -v
 ENV PUB_CACHE=/workspace/.pub_cache
 
 # Env
