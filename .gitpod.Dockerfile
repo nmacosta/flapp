@@ -30,7 +30,7 @@ RUN mkdir -p "${ANDROID_HOME}"
 RUN touch $ANDROID_HOME/repositories.cfg
 RUN wget -q "${ANDROID_SDK_URL}" -O "${ANDROID_SDK_ARCHIVE}"
 RUN unzip -q -d "${ANDROID_HOME}" "${ANDROID_SDK_ARCHIVE}"
-RUN echo y | "${ANDROID_HOME}/tools/bin/sdkmanager" "platform-tools" "platforms;android-29" "build-tools;29.0.2"
+# RUN echo y | "${ANDROID_HOME}/tools/bin/sdkmanager" "platform-tools" "platforms;android-29" "build-tools;29.0.2"
 RUN rm "${ANDROID_SDK_ARCHIVE}"
 
 # Flutter
