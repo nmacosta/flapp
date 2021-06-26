@@ -15,6 +15,7 @@ RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk env init"
 
 RUN java -version
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk env"
+RUN sed -ri -e 's/java=11.0.11.fx-zulu/java=8.0.292-open/g' "/home/gitpod/.sdkmanrc"
 
 # Android
 # ENV JAVA_HOME="/home/gitpod/.sdkman/candidates/java/current/bin/"
