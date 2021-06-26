@@ -13,6 +13,9 @@ USER gitpod
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.292-open"
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk env init"
 
+RUN java -version
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk env"
+
 # Android
 # ENV JAVA_HOME="/home/gitpod/.sdkman/candidates/java/current/bin/"
 ENV ANDROID_HOME="/home/gitpod/.android"
